@@ -1,0 +1,63 @@
+int appWidth  = 1280;
+int appHeight = 720;
+
+//JN stuff
+int rate = 60; 
+int slide = 1280;
+
+
+float d;
+float xPos;
+float yPos;
+float xVel;
+float yVel;
+
+PImage myImage;
+
+void setup(){
+  size( appWidth, appHeight );
+  frameRate(24); // have slider adujust
+  myImage = loadImage("shapeimage_1.png");//j loading image
+
+  d = random(100,100); //jn
+  xPos = random(d/2, 853 - (d/2)); //jn
+  yPos = random(d/2, height - (d/2)); //jn
+  xVel = random(-3,3);    //jn
+  yVel = random(-3,3);    //jn
+}
+
+void draw(){
+//  
+//    noStroke();    
+//   // rect(width * 2.0/ 3.0,0, width / 3.0, height );
+//    noFill();
+//      frameRate (int("frame")); // trying to adjust frame rate?
+  background(200,0,200);
+  noStroke();
+  fill(255);
+  tint(0,200,255); //have sliders control colors?
+  image(myImage,xPos, yPos); //
+
+  //make stuff happen here:
+  //ellipse(xPos,yPos,d,d); //test ellipse 
+     
+
+    xPos = xPos + xVel;
+    yPos = yPos + yVel;
+  if(xPos < (d/2)) {
+    xVel = xVel*(-1);
+     fill(255);
+}
+  else if(yPos < (d/2)){   
+  yVel = yVel*(-1);
+   fill(255);
+}
+  else if(xPos > 853 -(d/2)){
+  xVel = xVel*(-1);
+  fill(225);
+}
+  else if (yPos > height- (d/2)){
+  yVel = yVel*(-1);
+  fill(255);
+}
+}
